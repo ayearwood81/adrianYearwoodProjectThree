@@ -1,0 +1,28 @@
+prompt user for their id (enter if they have one, leave blank if they do not)
+
+if they do:
+    their id is used to populate the side menu with their previous entries
+if they do not:
+    a new user is created and they are shown their new ID
+    user is prompted to record their ID so they can access their confidant again
+if they enter an id that does not exist
+    they are notified and given the chance to enter a new id or leave blank to create a new user
+
+add onChange to the textbox element for the title
+    saves the value in state so that it can be added as the title on a previous entry
+add onChange to the textarea element for the body
+    saves the value in state so that it can be added as the content in a previous entry
+add onSubmit to the submit button
+    takes the value of the title, the value of the textarea, and the time of day and then stores them all in the user object as a previous entry
+previous entries are added to the dropdown menu on the right as buttons using their title and date as an identifier
+add onClick to dropdown menu button
+    expand and contract the dropdown menu
+add onClick to previous entry buttons
+    when button is clicked, populate the title field and textarea with the title and content from the previous entry object
+    "submit" button changes to "clear" button
+        add onSubmit to clear button
+            clears the form and changes back to "submit" button
+add onClick to reset button
+    clears id field (depopulating the previous entry dropdown menu)
+    clears textarea and title field
+    runs initial prompt again
