@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import firebase from "./firebase";
-import {getDatabase, onValue, push, ref, remove} from "firebase/database"
+import {getDatabase, onValue, ref, remove} from "firebase/database"
 
 const OldEntries = () => {
 
     const [oldEntries, setOldEntries] = useState([]);
+    const inputRef = useRef();
 
     useEffect( () => {
         // create variable to hold database details
@@ -29,29 +30,49 @@ const OldEntries = () => {
         })
     }, []);
     
-    console.log(oldEntries);
+    const handleToggle = () => {
+        if (inputRef.current.checked) {
+            inputRef.current.checked = false;
+        } else {
+            inputRef.current.checked = true;
+        }
+    }
+
+    const handleEntryClick = (entryID) => {
+        console.log("entry clicked", entryID);
+        if (window.confirm("Reread this entry?")) {
+            console.log("chose to reread");
+        } else if (window.confirm("Delete this entry?")) {
+            const database = getDatabase(firebase);
+            const dbRef = ref(database, `${entryID}`);
+            remove(dbRef);
+        } 
+    }
     
     return (
-        <div className="collapsible-menu">
-            <input type="checkbox" id="menu"></input>
-            <label htmlFor="menu">
-                <button className="menu-button"><i className="fa-regular fa-square-caret-down"> Your List</i></button>
-                <span className="list-number"></span>
+        <div className="wrapper">
+            <div className="collapsibleMenu">
+                <input ref={inputRef} type="checkbox" id="menu"></input>
+                <label htmlFor="menu">
+                    <button onClick={handleToggle} className="menuButton"><i className="fa-regular fa-square-caret-down"></i>Previous Entries</button>
+                    <span className="listNumber">{`(${oldEntries.length})`}</span>
                 </label>
-            <div className="menu-content">
-                <ul>
-                    {
-                        oldEntries.map( (oldEntry) => {
-                            return(
-                                <li key={oldEntry.key}>
-                                    <button>{`${oldEntry.entry.date}: ${oldEntry.entry.title}`}</button>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
+                <div className="menuContent">
+                    <ul>
+                        {
+                            oldEntries.map( (oldEntry) => {
+                                return(
+                                    <li key={oldEntry.key}>
+                                        <button onClick={() => handleEntryClick(oldEntry.key)}>{`${oldEntry.entry.date}: ${oldEntry.entry.title}`}</button>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                </div>
             </div>
-	    </div>
+
+        </div>
     )
 }
 

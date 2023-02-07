@@ -1,6 +1,6 @@
 import { useState } from "react";
 import firebase from "./firebase";
-import {push, onValue, ref, getDatabase, remove} from "firebase/database"
+import {push, ref, getDatabase} from "firebase/database"
 
 const EntryForm = () => {
 
@@ -24,25 +24,29 @@ const EntryForm = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-  
-      const database = getDatabase(firebase);
-      const dbRef = ref(database);
-      console.log(body, title, entryDate);
 
-      const diaryEntry = {
-        content:body,
-        title:title,
-        date: entryDate,
+      if (body && title) {
+        const database = getDatabase(firebase);
+        const dbRef = ref(database);
+        console.log(body, title, entryDate);
+  
+        const diaryEntry = {
+          content:body,
+          title:title,
+          date: entryDate,
+        }
+    
+        push(dbRef, diaryEntry);
+    
+        setBody("");
+        setTitle("");
+      } else {
+        alert("Oops!  Missing title or content!");
       }
-  
-      push(dbRef, diaryEntry);
-  
-      setBody("");
-      setTitle("");
     }
 
     return (
-        <div>
+        <div className="wrapper">
             <form onSubmit={handleSubmit} action="submit" className="entryForm" name="entryForm">
                 <label htmlFor="entryTitle">Title</label>
                 <input 
@@ -58,6 +62,7 @@ const EntryForm = () => {
                     id="entryBody" 
                     type="textarea" 
                     rows="10"
+                    placeholder="Dear Diary..."
                     value={body}
                 />
                 <button type="submit">Submit</button>
