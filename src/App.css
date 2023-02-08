@@ -7,17 +7,24 @@ html { box-sizing: border-box;}
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
 html {
-  background-color: slategray;
+  background-image: url("./pexels-dids-1322466.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:100vh;
 }
+
 h1 {
   text-align: center;
-  font-family: 'Cedarville Cursive', cursive;
+  font-family: 'Marck Script', cursive;
   font-style: italic;
+  color:white;
+  margin-bottom: 1%;
 }
 
 .wrapper {
   width: 80%;
-  max-width: 1200px;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -26,53 +33,100 @@ form {
   flex-direction: column;
 }
 
+form label {
+  display:none;
+}
+
+form input {
+  background: none;
+  cursor: pointer;
+  width:40%;
+  margin: 1% auto;
+  text-align: center;
+  border: 1px solid black;
+  font-family: 'Marck Script', cursive;
+  background-color: rgba(250, 235, 215, 0.8);
+}
+
 form textarea {
   resize: none;
+  background-color: rgba(250, 235, 215, 0.8);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  margin-top: 1%;
+  border: 1px solid black;
+  font-family: 'Marck Script', cursive;
 }
+
+form button {
+  width:auto;
+  align-self: flex-end;
+  background-color: rgb(12, 112, 12);
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin-top: 1%;
+  padding:1%;
+  letter-spacing: 4px;
+  transition: 0.5s;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+form button:hover, form button:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
 .menuContent {
   width: 50%;
   max-height: 0;
   overflow: hidden;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.568);
+  background-color: rgba(250, 235, 215, 0.9);
   border-radius: 10%;
 }
 
 .collapsibleMenu {
   z-index: 10;
-  margin-top: 5%;
+  margin-top: 1%;
   display:flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  width:100%;
 }
-.collapsibleMenu .listNumber {
-  font-size: 1.2rem;
-  margin-left: 10px;
-  font-family: 'Courier New', Courier, monospace;
-}
+
+
 .collapsibleMenu label {
-  font-family: 'Cedarville Cursive', cursive;
-  color: slateblue;
+  font-family: 'Marck Script', cursive;
+  color: rgb(12, 112, 12);
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1rem;
   display: block;
   cursor: pointer;
   opacity: 0.8;
   text-align: center;
   padding-bottom: 1%;
+  width:50%;
 }
+
 .collapsibleMenu label i {
   margin-right: 10px;
 }
-.collapsibleMenu input#menu {
+
+.collapsibleMenu input {
   display: none;
 }
+
 .collapsibleMenu .menuContent ul {
   padding: 0;
+  list-style: none;
 }
-.collapsibleMenu .list {
-  color: #464242;
-  font-family: 'Cedarville Cursive', cursive;
+.collapsibleMenu .entryButton {
+  color: black;
+  font-family: 'Marck Script', cursive;
   line-height: 2;
   text-decoration: underline dotted;
   cursor: pointer;
@@ -80,28 +134,98 @@ form textarea {
   border: none;
   transition: 0.3s;
 }
-.collapsibleMenu .list:hover, .collapsibleMenu .list:focus {
-  color: white;
-  background-color: #c11959;
+
+.collapsibleMenu .deleteButton {
+  border: none;
+  padding: 5px;
+  font-size: 15px;
+  height: 28px;
+  width: 28px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 3% 4% 0% 4%;
+  border-radius: 50%;
+  margin-bottom: 2%;
+  background-color: rgb(12, 112, 12);
+  color:  rgba(250, 235, 215, 0.8);
 }
+.collapsibleMenu .deleteButton:hover, .collapsibleMenu .deleteButton:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+
 .collapsibleMenu .menuButton {
-  background-color: slateblue;
-  font-family: 'Cedarville Cursive', cursive;
-  color: white;
+  background-color: rgb(12, 112, 12);
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
   margin-bottom: 1%;
+  padding:1%;
+  cursor: pointer;
   letter-spacing: 4px;
   transition: 0.5s;
   border-radius: 5%;
-
 }
+
 .collapsibleMenu .menuButton:hover, .collapsibleMenu .menuButton:focus {
-  background-color: white;
-  color: slateblue;
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
 }
 
 /* Toggle Effect */
 input:checked ~ .menuContent {
   max-height: 100%;
+}
+
+.selectedWrapper {
+  margin-top: 25px;
+}
+
+.selectedWrapper h2 {
+  font-family: 'Marck Script', cursive;
+}
+
+.selectedWrapper p {
+  font-family: 'Marck Script', cursive;
+}
+
+.selectedWrapper button {
+  background-color: #0c700c;
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin-bottom: 1%;
+  padding:1%;
+  cursor: pointer;
+  letter-spacing: 4px;
+  transition: 0.5s;
+  border-radius: 5%;
+}
+
+.selectedWrapper button:hover, .selectedWrapper button:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+
+@media (max-width: 1500px) {
+  .selectedWrapper {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    margin-bottom: 33px;
+  }
+  .menuContent ul li {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 }

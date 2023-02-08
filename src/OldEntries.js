@@ -60,7 +60,7 @@ const OldEntries = () => {
                 swalWithBootstrapButtons.fire(
                     'Deleted!',
                     'Your entry has been deleted.',
-                    'success'
+                    'success',
                 )
                 const database = getDatabase(firebase);
                 const dbRef = ref(database, `${oldEntry.key}`);
@@ -77,19 +77,12 @@ const OldEntries = () => {
         })
     }
     
-
-    // const handleDisplayOld = (oldEntry) => {
-    //     console.log(overlayRef);
-    //     overlayRef.current.style.display = "block";
-    // }
-    
     return (
-        <div className="wrapper">
+        <div className="wrapper bottomWrapper">
             <div className="collapsibleMenu">
                 <input ref={inputRef} type="checkbox" id="menu"></input>
                 <label htmlFor="menu">
                     <button onClick={handleToggle} className="menuButton"><i className="fa-regular fa-square-caret-down"></i>Previous Entries</button>
-                    <span className="listNumber">{`(${oldEntries.length})`}</span>
                 </label>
                 <div className="menuContent">
                     <ul>
@@ -98,7 +91,7 @@ const OldEntries = () => {
                                 return(
                                     <li key={oldEntry.key}>
                                         <Link to={`/${oldEntry.key}`}>
-                                            <button className="entryButton">{`${oldEntry.entry.date}: ${oldEntry.entry.title}`}</button>
+                                            <button className="entryButton">{`${oldEntry.entry.title} - ${oldEntry.entry.date}`}</button>
                                         </Link>
                                         <button className="deleteButton" onClick={() => handleRemove(oldEntry)} ><i className="fa-solid fa-trash"/></button>
                                     </li>

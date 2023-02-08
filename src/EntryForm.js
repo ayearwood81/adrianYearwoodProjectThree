@@ -1,6 +1,7 @@
 import { useState } from "react";
 import firebase from "./firebase";
 import {push, ref, getDatabase} from "firebase/database"
+import Swal from "sweetalert2";
 
 const EntryForm = () => {
 
@@ -41,7 +42,11 @@ const EntryForm = () => {
         setBody("");
         setTitle("");
       } else {
-        alert("Oops!  Missing title or content!");
+        Swal.fire(
+          'Oops!',
+          'Missing Title or Content!',
+          'question'
+        )
       }
     }
 

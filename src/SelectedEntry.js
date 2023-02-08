@@ -27,7 +27,7 @@ const SelectedEntry = () => {
     }, []);
 
     return (
-        <div className="wrapper">
+        <div className="wrapper selectedWrapper">
             <h2>{currentEntry.entry.title} - {currentEntry.entry.date}</h2>
             <p>{currentEntry.entry.content}</p>
             <Link to={"/"}>
