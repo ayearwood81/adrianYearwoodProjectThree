@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import firebase from "./firebase";
+import Swal from "sweetalert2";
+import {Link} from "react-router-dom";
 import {getDatabase, onValue, ref, remove} from "firebase/database"
 
 const OldEntries = () => {
@@ -38,16 +40,48 @@ const OldEntries = () => {
         }
     }
 
-    const handleEntryClick = (entryID) => {
-        console.log("entry clicked", entryID);
-        if (window.confirm("Reread this entry?")) {
-            console.log("chose to reread");
-        } else if (window.confirm("Delete this entry?")) {
-            const database = getDatabase(firebase);
-            const dbRef = ref(database, `${entryID}`);
-            remove(dbRef);
-        } 
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+    })
+
+    const handleRemove = (oldEntry) => {
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your entry has been deleted.',
+                    'success'
+                )
+                const database = getDatabase(firebase);
+                const dbRef = ref(database, `${oldEntry.key}`);
+                remove(dbRef);
+            } else if (
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your secrets are safe with me ;)',
+                    'success'
+                )
+            }
+        })
     }
+    
+
+    // const handleDisplayOld = (oldEntry) => {
+    //     console.log(overlayRef);
+    //     overlayRef.current.style.display = "block";
+    // }
     
     return (
         <div className="wrapper">
@@ -63,7 +97,10 @@ const OldEntries = () => {
                             oldEntries.map( (oldEntry) => {
                                 return(
                                     <li key={oldEntry.key}>
-                                        <button onClick={() => handleEntryClick(oldEntry.key)}>{`${oldEntry.entry.date}: ${oldEntry.entry.title}`}</button>
+                                        <Link to={`/${oldEntry.key}`}>
+                                            <button className="entryButton">{`${oldEntry.entry.date}: ${oldEntry.entry.title}`}</button>
+                                        </Link>
+                                        <button className="deleteButton" onClick={() => handleRemove(oldEntry)} ><i className="fa-solid fa-trash"/></button>
                                     </li>
                                 )
                             })
@@ -71,7 +108,6 @@ const OldEntries = () => {
                     </ul>
                 </div>
             </div>
-
         </div>
     )
 }
