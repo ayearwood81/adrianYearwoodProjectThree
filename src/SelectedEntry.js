@@ -24,7 +24,7 @@ const SelectedEntry = () => {
             }
           }
         })
-    }, []);
+    }, [entryID]);
 
     return (
         <div className="wrapper selectedWrapper">
