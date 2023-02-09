@@ -1,38 +1,261 @@
-.App {
+html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
+
+html { box-sizing: border-box;}
+
+*, *:before, *:after {box-sizing: inherit}
+
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
+
+.app {
+  background-image: url("./background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height:100vh;
+}
+
+body {
+  font-family: 'Marck Script', cursive;
+  height:90vh;
+}
+
+h1 {
   text-align: center;
+  font-style: italic;
+  color:white;
+  margin-top: 0;
+  margin-bottom: 1%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+  width: 80%;
+  max-width: 800px;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+form {
+  display:flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position:relative;
 }
 
-.App-link {
-  color: #61dafb;
+form label {
+  display:none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+form input {
+  background: none;
+  cursor: pointer;
+  width:40%;
+  margin: 1% auto;
+  text-align: center;
+  border: 1px solid black;
+  font-family: 'Marck Script', cursive;
+  background-color: rgba(250, 235, 215, 0.8);
+}
+
+form textarea {
+  resize: none;
+  background-color: rgba(250, 235, 215, 0.8);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  margin-top: 1%;
+  border: 1px solid black;
+  font-family: 'Marck Script', cursive;
+}
+
+form button {
+  width:auto;
+  align-self: flex-end;
+  background-color: rgb(12, 112, 12);
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin-top: 1%;
+  padding:1%;
+  letter-spacing: 4px;
+  transition: 0.5s;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+form button:hover, form button:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+form a {
+  text-decoration: none;
+  color:black;
+}
+
+.menuContent {
+  width: 50%;
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(250, 235, 215, 0.9);
+  border-radius: 10%;
+}
+
+.menuContent ul {
+  overflow:hidden;
+  overflow-y:scroll;
+  max-height: 200px;
+}
+
+.collapsibleMenu {
+  margin-top: 1%;
+  display:flex;
+  flex-direction: column;
+  width:100%;
+}
+
+
+.collapsibleMenu label {
+  font-family: 'Marck Script', cursive;
+  cursor: pointer;
+  opacity: 0.8;
+  text-align: center;
+  width:50%;
+}
+
+.collapsibleMenu label i {
+  margin-right: 10px;
+}
+
+.collapsibleMenu input {
+  display: none;
+}
+
+.collapsibleMenu .menuContent ul {
+  padding: 0;
+  list-style: none;
+}
+
+.collapsibleMenu .entryButton {
+  color: black;
+  font-family: 'Marck Script', cursive;
+  line-height: 2;
+  text-decoration: underline dotted;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: 0.3s;
+}
+
+.collapsibleMenu .deleteButton {
+  border: none;
+  padding: 5px;
+  font-size: 15px;
+  height: 28px;
+  width: 28px;
+  box-shadow: 0 2px 4px rgb(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 3% 4% 0% 4%;
+  border-radius: 50%;
+  margin-bottom: 2%;
+  background-color: rgb(12, 112, 12);
+  color:  rgba(250, 235, 215, 0.8);
+}
+.collapsibleMenu .deleteButton:hover, .collapsibleMenu .deleteButton:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+
+.collapsibleMenu .menuButton {
+  background-color: rgb(12, 112, 12);
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin-bottom: 1%;
+  padding:1%;
+  cursor: pointer;
+  letter-spacing: 4px;
+  transition: 0.5s;
+  border-radius: 5%;
+}
+
+.collapsibleMenu .menuButton:hover, .collapsibleMenu .menuButton:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+/* Toggle Effect */
+input:checked ~ .menuContent {
+  max-height: 100%;
+}
+
+.selectedWrapper {
+  margin-top: 25px;
+}
+
+.selectedWrapper {
+  font-family: 'Marck Script', cursive;
+}
+
+.selectedWrapper button {
+  background-color: #0c700c;
+  font-family: 'Marck Script', cursive;
+  color:  rgba(250, 235, 215, 0.8);
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.397);
+  margin-bottom: 1%;
+  padding:1%;
+  cursor: pointer;
+  letter-spacing: 4px;
+  transition: 0.5s;
+  border-radius: 5%;
+}
+
+.selectedWrapper button:hover, .selectedWrapper button:focus {
+  background-color:  rgba(250, 235, 215, 0.95);
+  color: rgb(12, 112, 12);
+}
+
+footer p {
+  margin:0;
+}
+
+footer a {
+  text-decoration: none;
+  color:black;
+}
+
+@media (max-width: 1500px) {
+  .selectedWrapper {
+    margin-top: 100px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 1280px) {
+  body {
+    height:95vh
+  }
+  footer {
+    text-align: center;
+    color:white;
+  }
+  footer a {
+    color:white;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    margin-bottom: 33px;
+  }
+  .menuContent ul li {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer {
+    font-size: 0.7rem;
   }
 }
