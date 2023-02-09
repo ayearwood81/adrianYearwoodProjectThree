@@ -6,19 +6,24 @@ html { box-sizing: border-box;}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-html {
-  background-image: url("./pexels-dids-1322466.jpg");
+.app {
+  background-image: url("./background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height:100vh;
 }
 
+body {
+  font-family: 'Marck Script', cursive;
+  height:90vh;
+}
+
 h1 {
   text-align: center;
-  font-family: 'Marck Script', cursive;
   font-style: italic;
   color:white;
+  margin-top: 0;
   margin-bottom: 1%;
 }
 
@@ -31,6 +36,7 @@ h1 {
 form {
   display:flex;
   flex-direction: column;
+  position:relative;
 }
 
 form label {
@@ -80,6 +86,11 @@ form button:hover, form button:focus {
   color: rgb(12, 112, 12);
 }
 
+form a {
+  text-decoration: none;
+  color:black;
+}
+
 .menuContent {
   width: 50%;
   max-height: 0;
@@ -87,6 +98,12 @@ form button:hover, form button:focus {
   text-align: center;
   background-color: rgba(250, 235, 215, 0.9);
   border-radius: 10%;
+}
+
+.menuContent ul {
+  overflow:hidden;
+  overflow-y:scroll;
+  max-height: 200px;
 }
 
 .collapsibleMenu {
@@ -184,11 +201,7 @@ input:checked ~ .menuContent {
   margin-top: 25px;
 }
 
-.selectedWrapper h2 {
-  font-family: 'Marck Script', cursive;
-}
-
-.selectedWrapper p {
+.selectedWrapper {
   font-family: 'Marck Script', cursive;
 }
 
@@ -211,10 +224,31 @@ input:checked ~ .menuContent {
   color: rgb(12, 112, 12);
 }
 
+footer p {
+  margin:0;
+}
+
+footer a {
+  text-decoration: none;
+  color:black;
+}
 
 @media (max-width: 1500px) {
   .selectedWrapper {
     margin-top: 100px;
+  }
+}
+
+@media (max-width: 1280px) {
+  body {
+    height:95vh
+  }
+  footer {
+    text-align: center;
+    color:white;
+  }
+  footer a {
+    color:white;
   }
 }
 
@@ -227,5 +261,7 @@ input:checked ~ .menuContent {
     flex-direction: column;
     align-items: center;
   }
-
+  footer {
+    font-size: 0.7rem;
+  }
 }

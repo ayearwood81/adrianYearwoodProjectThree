@@ -41,10 +41,15 @@ const EntryForm = () => {
     
         setBody("");
         setTitle("");
+        Swal.fire(
+          'Submitted!',
+          'Your secret is safe with me ;)',
+          'success'
+        )
       } else {
         Swal.fire(
           'Oops!',
-          'Missing Title or Content!',
+          'Need both title and content!',
           'question'
         )
       }
