@@ -107,25 +107,18 @@ form a {
 }
 
 .collapsibleMenu {
-  z-index: 10;
   margin-top: 1%;
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
   width:100%;
 }
 
 
 .collapsibleMenu label {
   font-family: 'Marck Script', cursive;
-  color: rgb(12, 112, 12);
-  font-weight: 600;
-  font-size: 1rem;
-  display: block;
   cursor: pointer;
   opacity: 0.8;
   text-align: center;
-  padding-bottom: 1%;
   width:50%;
 }
 
@@ -141,6 +134,7 @@ form a {
   padding: 0;
   list-style: none;
 }
+
 .collapsibleMenu .entryButton {
   color: black;
   font-family: 'Marck Script', cursive;
